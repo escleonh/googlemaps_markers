@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDcSkGNk4mrs98O_CNeK3uL6uFObG8bUOk"
+    async
+  ></script>
+    <style>
+        div
+{
+    /* position: absolute; */
+    height: 100vh;
+    width: 100%; 
+}
+    </style>
+    <script>
+        function alertFunction(){
+        window.onload = function(){
+            console.log("here");
+        }
+
+        var iframeObj= document.getElementById("myiframe");
+        var mydata = iframeObj.contentWindow.mapData;
+        // var buttonSearch = document.getElementById("searchBtn");
+        var markerObj = iframeObj.contentWindow.document.getElementById("map").mark;
+        let mapObj = iframeObj.contentWindow.document.getElementById("map").gmap;
+        
+        // buttonSearch.addEventListener("click", ()=>{
+        mapObj.setCenter({lat: 35.277744,lng:-93.1338});
+        mapObj.setZoom(10);
+
+        mapObj.panTo({lat: 35.2784,lng:-93.1338});
+        google.maps.event.trigger(markerObj, 'click' );
+        // };
+        // });
+
+        }
+        
+        
+
+
+    
+    </script>
+</head>
+<body>
+<h1>Main page</h1>
+<div>
+    <iframe id="myiframe" src="page2.html" width="100%" height="100%" frameborder="0"  ></iframe>
+</div>
+<!-- <button id="searchBtn">CLick me</button>  -->
+
+<button onclick="alertFunction();">CLick me</button>
+<button onclick="changeSrc();">Change me</button>
+
+<script>
+function changeSrc(){
+    console.log(document.getElementById("myiframe").attributes.src);
+iframeObj= document.getElementById("myiframe").src= "page3.html";
+
+
+}
+</script>
+</body>
+</html>
